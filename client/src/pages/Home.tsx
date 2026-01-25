@@ -5,9 +5,6 @@ import { CookieBanner } from "@/components/CookieBanner";
 import type { BioLink } from "@shared/schema";
 import { 
   Globe, 
-  Instagram, 
-  Twitter, 
-  Youtube, 
   MapPin, 
   Calendar, 
   Utensils, 
@@ -15,7 +12,6 @@ import {
   Ticket,
   Phone
 } from "lucide-react";
-import { SiTiktok, SiSnapchat } from "react-icons/si";
 
 const bioLinks: BioLink[] = [
   {
@@ -67,46 +63,6 @@ const bioLinks: BioLink[] = [
     category: "experience",
   },
   {
-    id: "instagram",
-    title: "Instagram",
-    titleAr: "انستغرام",
-    url: "https://www.instagram.com/visitdiriyah/",
-    icon: "instagram",
-    category: "social",
-  },
-  {
-    id: "twitter",
-    title: "Twitter / X",
-    titleAr: "تويتر / إكس",
-    url: "https://twitter.com/VisitDiriyah",
-    icon: "twitter",
-    category: "social",
-  },
-  {
-    id: "youtube",
-    title: "YouTube",
-    titleAr: "يوتيوب",
-    url: "https://www.youtube.com/@VisitDiriyah",
-    icon: "youtube",
-    category: "social",
-  },
-  {
-    id: "tiktok",
-    title: "TikTok",
-    titleAr: "تيك توك",
-    url: "https://www.tiktok.com/@visitdiriyah",
-    icon: "tiktok",
-    category: "social",
-  },
-  {
-    id: "snapchat",
-    title: "Snapchat",
-    titleAr: "سناب شات",
-    url: "https://www.snapchat.com/add/visitdiriyah",
-    icon: "snapchat",
-    category: "social",
-  },
-  {
     id: "contact",
     title: "Contact Us",
     titleAr: "تواصل معنا",
@@ -125,11 +81,6 @@ const getIcon = (iconName: string) => {
     case "utensils": return <Utensils {...iconProps} />;
     case "building": return <Building2 {...iconProps} />;
     case "mappin": return <MapPin {...iconProps} />;
-    case "instagram": return <Instagram {...iconProps} />;
-    case "twitter": return <Twitter {...iconProps} />;
-    case "youtube": return <Youtube {...iconProps} />;
-    case "tiktok": return <SiTiktok {...iconProps} />;
-    case "snapchat": return <SiSnapchat {...iconProps} />;
     case "phone": return <Phone {...iconProps} />;
     default: return <Globe {...iconProps} />;
   }
@@ -138,7 +89,6 @@ const getIcon = (iconName: string) => {
 export default function Home() {
   const officialLinks = bioLinks.filter(l => l.category === "official");
   const experienceLinks = bioLinks.filter(l => l.category === "experience");
-  const socialLinks = bioLinks.filter(l => l.category === "social");
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -179,7 +129,7 @@ export default function Home() {
                 Diriyah
               </p>
               <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                الوجهة التاريخية والثقافية للمملكة العربية السعودية 🇸🇦
+                الوجهة التاريخية والثقافية للمملكة العربية السعودية
               </p>
             </div>
           </div>
@@ -203,18 +153,6 @@ export default function Home() {
             </h2>
             <div className="space-y-3">
               {experienceLinks.map((link) => (
-                <BioLinkCard key={link.id} link={link} icon={getIcon(link.icon)} />
-              ))}
-            </div>
-          </section>
-
-          {/* Social Links */}
-          <section className="space-y-3">
-            <h2 className="text-sm font-semibold text-muted-foreground px-1">
-              تابعنا
-            </h2>
-            <div className="space-y-3">
-              {socialLinks.map((link) => (
                 <BioLinkCard key={link.id} link={link} icon={getIcon(link.icon)} />
               ))}
             </div>
