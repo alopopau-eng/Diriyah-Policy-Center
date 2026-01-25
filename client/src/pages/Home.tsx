@@ -19,7 +19,7 @@ const bioLinks: BioLink[] = [
     title: "Discover Diriyah ",
     titleAr: "مطل البجيري",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
-    icon: "globe",
+    icon: "",
     category: "official",
   },
   {
@@ -27,7 +27,7 @@ const bioLinks: BioLink[] = [
     title: "Diriyah.",
     titleAr: "الدرعية",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
-    icon: "ticket",
+    icon: "",
     category: "official",
   },
   {
@@ -134,7 +134,7 @@ export default function Home() {
           {/* Official Links */}
           <section className="space-y-3">
             <h2 className="text-sm font-semibold text-muted-foreground px-1">
-              الروابط الرسمية
+              الروابط
             </h2>
             <div className="space-y-3">
               {officialLinks.map((link) => (
