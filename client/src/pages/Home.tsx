@@ -3,21 +3,21 @@ import { BioLinkCard } from "@/components/BioLinkCard";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import type { BioLink } from "@shared/schema";
-import { 
-  Globe, 
-  MapPin, 
-  Calendar, 
-  Utensils, 
+import {
+  Globe,
+  MapPin,
+  Calendar,
+  Utensils,
   Building2,
   Ticket,
-  Phone
+  Phone,
 } from "lucide-react";
 
 const bioLinks: BioLink[] = [
   {
     id: "website",
     title: "Official Website",
-    titleAr: "الموقع الرسمي",
+    titleAr: "مطل البجيري",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
     icon: "globe",
     category: "official",
@@ -25,7 +25,7 @@ const bioLinks: BioLink[] = [
   {
     id: "tickets",
     title: "Tickets",
-    titleAr: "التذاكر",
+    titleAr: "الدرعية",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
     icon: "ticket",
     category: "official",
@@ -54,52 +54,46 @@ const bioLinks: BioLink[] = [
     icon: "building",
     category: "experience",
   },
-  {
-    id: "bujairi",
-    title: "Bujairi Terrace",
-    titleAr: "مطل البجيري",
-    url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
-    icon: "mappin",
-    category: "experience",
-  },
-  {
-    id: "contact",
-    title: "Contact Us",
-    titleAr: "تواصل معنا",
-    url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
-    icon: "phone",
-    category: "official",
-  },
 ];
 
 const getIcon = (iconName: string) => {
   const iconProps = { className: "h-5 w-5" };
   switch (iconName) {
-    case "globe": return <Globe {...iconProps} />;
-    case "ticket": return <Ticket {...iconProps} />;
-    case "calendar": return <Calendar {...iconProps} />;
-    case "utensils": return <Utensils {...iconProps} />;
-    case "building": return <Building2 {...iconProps} />;
-    case "mappin": return <MapPin {...iconProps} />;
-    case "phone": return <Phone {...iconProps} />;
-    default: return <Globe {...iconProps} />;
+    case "globe":
+      return <Globe {...iconProps} />;
+    case "ticket":
+      return <Ticket {...iconProps} />;
+    case "calendar":
+      return <Calendar {...iconProps} />;
+    case "utensils":
+      return <Utensils {...iconProps} />;
+    case "building":
+      return <Building2 {...iconProps} />;
+    case "mappin":
+      return <MapPin {...iconProps} />;
+    case "phone":
+      return <Phone {...iconProps} />;
+    default:
+      return <Globe {...iconProps} />;
   }
 };
 
 export default function Home() {
-  const officialLinks = bioLinks.filter(l => l.category === "official");
-  const experienceLinks = bioLinks.filter(l => l.category === "experience");
+  const officialLinks = bioLinks.filter((l) => l.category === "official");
+  const experienceLinks = bioLinks.filter((l) => l.category === "experience");
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <CookieBanner />
-      
+
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">د</span>
+              <span className="text-primary-foreground font-bold text-sm">
+                د
+              </span>
             </div>
             <span className="font-semibold text-foreground">الدرعية</span>
           </div>
@@ -114,20 +108,23 @@ export default function Home() {
           <div className="text-center space-y-4">
             <div className="relative inline-block">
               <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center shadow-lg">
-                <span className="text-4xl font-bold text-primary-foreground">الدرعية</span>
+                <span className="text-4xl font-bold text-primary-foreground">
+                  الدرعية
+                </span>
               </div>
               <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-green-500 border-4 border-background flex items-center justify-center">
                 <span className="text-white text-xs">✓</span>
               </div>
             </div>
-            
+
             <div className="space-y-2">
-              <h1 className="text-2xl font-bold text-foreground" data-testid="text-title">
+              <h1
+                className="text-2xl font-bold text-foreground"
+                data-testid="text-title"
+              >
                 الدرعية
               </h1>
-              <p className="text-lg text-primary font-medium">
-                Diriyah
-              </p>
+              <p className="text-lg text-primary font-medium">Diriyah</p>
               <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
                 الوجهة التاريخية والثقافية للمملكة العربية السعودية
               </p>
@@ -141,7 +138,11 @@ export default function Home() {
             </h2>
             <div className="space-y-3">
               {officialLinks.map((link) => (
-                <BioLinkCard key={link.id} link={link} icon={getIcon(link.icon)} />
+                <BioLinkCard
+                  key={link.id}
+                  link={link}
+                  icon={getIcon(link.icon)}
+                />
               ))}
             </div>
           </section>
@@ -153,7 +154,11 @@ export default function Home() {
             </h2>
             <div className="space-y-3">
               {experienceLinks.map((link) => (
-                <BioLinkCard key={link.id} link={link} icon={getIcon(link.icon)} />
+                <BioLinkCard
+                  key={link.id}
+                  link={link}
+                  icon={getIcon(link.icon)}
+                />
               ))}
             </div>
           </section>
