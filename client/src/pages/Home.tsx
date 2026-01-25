@@ -24,8 +24,8 @@ const bioLinks: BioLink[] = [
   },
   {
     id: "tickets",
-    title: "Book Tickets",
-    titleAr: "احجز تذاكرك",
+    title: "Tickets",
+    titleAr: "التذاكر",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
     icon: "ticket",
     category: "official",
