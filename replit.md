@@ -1,69 +1,72 @@
-# Diriyah Bio Links
+# Diriyah Bio Links - الدرعية
 
 ## Overview
+صفحة بيو لينكس للدرعية - الوجهة التاريخية والثقافية للمملكة العربية السعودية. تتضمن روابط رسمية ومنصات التواصل الاجتماعي مع صفحات الشروط والأحكام وسياسة الخصوصية وبانر الكوكيز المتوافق مع سياسات جوجل الإعلانية.
 
-A bilingual (Arabic/English) bio link page for Diriyah, a historical and cultural destination in Saudi Arabia. The application serves as a centralized hub for official links, social media profiles, and visitor information. Built as a modern single-page application with RTL (right-to-left) support for Arabic content, dark/light theme toggle, and GDPR-compliant cookie consent management.
+A bio links page for Diriyah - the historical and cultural destination of Saudi Arabia. Includes official links and social media platforms with terms & conditions, privacy policy pages, and a cookie consent banner compliant with Google Ads policies.
+
+## Project Structure
+```
+client/
+├── src/
+│   ├── components/
+│   │   ├── BioLinkCard.tsx      # Individual link card component
+│   │   ├── CookieBanner.tsx     # Cookie consent banner with settings
+│   │   ├── Footer.tsx           # Page footer with legal links
+│   │   └── ThemeToggle.tsx      # Dark/light mode toggle
+│   ├── pages/
+│   │   ├── Home.tsx             # Main bio links page
+│   │   ├── Terms.tsx            # Terms and conditions (Arabic)
+│   │   ├── Privacy.tsx          # Privacy policy (Arabic)
+│   │   └── not-found.tsx        # 404 page
+│   ├── App.tsx                  # Main app with routing
+│   └── index.css                # Tailwind config with Diriyah colors
+├── index.html                   # HTML with RTL Arabic support
+server/
+├── routes.ts                    # API endpoints for analytics
+└── storage.ts                   # In-memory storage
+shared/
+└── schema.ts                    # TypeScript types and schemas
+```
+
+## Features
+- **Bio Links Page**: 12+ links to official website, social media, and experiences
+- **RTL Arabic Support**: Full right-to-left layout for Arabic content
+- **Cookie Consent Banner**: GDPR-compliant with three consent types:
+  - Necessary (always enabled)
+  - Analytics (opt-in)
+  - Marketing (opt-in)
+- **Dark/Light Mode**: Theme toggle with system preference detection
+- **Terms & Conditions**: Full Arabic legal page
+- **Privacy Policy**: Comprehensive privacy policy with Google Ads compliance section
+- **Responsive Design**: Mobile-first design
+
+## Color Scheme
+Inspired by Diriyah's desert and heritage:
+- Primary: Golden sand (#C9932C)
+- Background: Warm cream tones
+- Dark mode: Rich brown/earth tones
+
+## Running the Application
+```bash
+npm run dev
+```
+The application runs on port 5000.
+
+## Routes
+- `/` - Main bio links page
+- `/terms` - Terms and conditions
+- `/privacy` - Privacy policy
+
+## API Endpoints
+- `GET /api/health` - Health check
+- `POST /api/analytics/consent` - Log cookie consent
+- `POST /api/analytics/pageview` - Log page views
+
+## Recent Changes
+- January 2026: Initial implementation with all core features
 
 ## User Preferences
-
-Preferred communication style: Simple, everyday language.
-
-## System Architecture
-
-### Frontend Architecture
-- **Framework**: React 18 with TypeScript
-- **Routing**: Wouter (lightweight React router)
-- **State Management**: TanStack React Query for server state
-- **Styling**: Tailwind CSS with custom Diriyah-themed color palette (sand, gold, earth tones)
-- **UI Components**: shadcn/ui component library built on Radix UI primitives
-- **Build Tool**: Vite with hot module replacement
-
-### Backend Architecture
-- **Runtime**: Node.js with Express 5
-- **API Design**: RESTful endpoints under `/api/*` prefix
-- **Static Serving**: Production builds served from `dist/public`
-- **Development**: Vite middleware integration for HMR
-
-### Key Design Decisions
-
-1. **Monorepo Structure**: Client, server, and shared code coexist with path aliases (`@/`, `@shared/`)
-2. **Schema Sharing**: TypeScript types defined in `shared/schema.ts` are used by both frontend and backend
-3. **Theme System**: CSS custom properties enable light/dark mode with Diriyah-inspired color schemes
-4. **RTL Support**: HTML configured with `dir="rtl"` and `lang="ar"` for proper Arabic text rendering
-5. **Cookie Consent**: Client-side consent management with localStorage persistence and optional server-side logging
-
-### Database Configuration
-- **ORM**: Drizzle ORM configured for PostgreSQL
-- **Schema Location**: `shared/schema.ts`
-- **Migrations**: Output to `./migrations` directory
-- **Current Usage**: Basic user schema defined; application primarily uses in-memory storage (`MemStorage` class)
-
-### Build System
-- **Client Build**: Vite outputs to `dist/public`
-- **Server Build**: esbuild bundles server code to `dist/index.cjs`
-- **Dependency Bundling**: Critical dependencies are bundled to reduce cold start times
-
-## External Dependencies
-
-### Database
-- **PostgreSQL**: Required for production (configured via `DATABASE_URL` environment variable)
-- **connect-pg-simple**: Session store for Express sessions
-
-### UI Libraries
-- **Radix UI**: Complete set of accessible, unstyled UI primitives
-- **Lucide React**: Icon library
-- **react-icons**: Additional icon sets (TikTok, Snapchat)
-- **embla-carousel-react**: Carousel component
-- **vaul**: Drawer component
-- **cmdk**: Command palette
-- **react-day-picker**: Calendar component
-
-### Form & Validation
-- **Zod**: Schema validation
-- **drizzle-zod**: Zod schema generation from Drizzle schemas
-- **react-hook-form**: Form state management
-- **@hookform/resolvers**: Zod resolver for react-hook-form
-
-### Development Tools
-- **Replit Plugins**: Runtime error overlay, cartographer, dev banner (development only)
-- **Google Tag Manager**: Analytics integration placeholder
+- Language: Arabic (RTL)
+- Theme: System preference with manual toggle
+- Cookie consent: Stored in localStorage
