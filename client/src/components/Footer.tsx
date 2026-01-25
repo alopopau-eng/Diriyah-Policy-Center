@@ -9,6 +9,14 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4 text-center">
           <nav className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <Link 
+              href="/about" 
+              className="hover:text-foreground transition-colors"
+              data-testid="link-about"
+            >
+              عن الدرعية
+            </Link>
+            <span className="text-border">|</span>
+            <Link 
               href="/terms" 
               className="hover:text-foreground transition-colors"
               data-testid="link-terms"
