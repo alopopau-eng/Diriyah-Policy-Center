@@ -16,15 +16,15 @@ import {
 const bioLinks: BioLink[] = [
   {
     id: "website",
-    title: "Official Website",
+    title: "Discover Diriyah ",
     titleAr: "مطل البجيري",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
     icon: "globe",
     category: "official",
   },
   {
-    id: "tickets",
-    title: "Tickets",
+    id: "diriyah",
+    title: "Diriyah.",
     titleAr: "الدرعية",
     url: "https://zzser.com?label=3f8ee59cd10ba4a802fc9fa97b7fb8d1",
     icon: "ticket",
