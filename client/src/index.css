@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* GE Dinar One Arabic Font */
+@font-face {
+  font-family: 'GE Dinar One';
+  src: url('./assets/fonts/GE-Dinar-One-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* LIGHT MODE - Diriyah inspired colors (sand, gold, earth tones) */
 :root {
   --button-outline: rgba(0,0,0, .10);
@@ -56,8 +65,8 @@
   --chart-4: 20 50% 35%;
   --chart-5: 15 45% 30%;
 
-  --font-sans: 'IBM Plex Sans', 'Noto Sans Arabic', sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'GE Dinar One', 'IBM Plex Sans', sans-serif;
+  --font-serif: 'GE Dinar One', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
   --radius: .5rem;
   --shadow-2xs: 0px 1px 2px 0px rgba(0,0,0, 0.03);
