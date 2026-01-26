@@ -1,5 +1,4 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { BioLinkCard } from "@/components/BioLinkCard";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import type { BioLink } from "@shared/schema";
@@ -83,89 +82,129 @@ export default function Home() {
   const experienceLinks = bioLinks.filter((l) => l.category === "experience");
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="relative min-h-screen w-full overflow-hidden">
       <CookieBanner />
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">
-                د
-              </span>
-            </div>
-            <span className="font-semibold text-foreground">الدرعية</span>
-          </div>
-          <ThemeToggle />
-        </div>
-      </header>
+      {/* Full-screen Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source
+          src="https://assets.diriyah.me/videos/About+Page+DSA.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-      {/* Main Content */}
-      <main className="flex-1 py-8 px-4">
-        <div className="max-w-md mx-auto space-y-8">
-          {/* Profile Section */}
-          <div className="text-center space-y-4">
-            <div className="relative inline-block">
-              <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center shadow-lg">
-                <span className="text-4xl font-bold text-primary-foreground">
+      {/* Dark overlay for better readability */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+
+      {/* Content Container */}
+      <div className="relative z-20 min-h-screen flex flex-col">
+        {/* Header */}
+        <header className="sticky top-0 z-40 bg-white/10 backdrop-blur-md border-b border-white/20">
+          <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-md bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                <span className="text-white font-bold text-sm">د</span>
+              </div>
+              <span className="font-semibold text-white">الدرعية</span>
+            </div>
+            <ThemeToggle />
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 py-8 px-4">
+          <div className="max-w-md mx-auto space-y-8">
+            {/* Profile Section */}
+            <div className="text-center space-y-4">
+              <div className="relative inline-block">
+                <div className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg border border-white/30">
+                  <span className="text-3xl font-bold text-white">الدرعية</span>
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-green-500/80 backdrop-blur-sm border-4 border-white/20 flex items-center justify-center">
+                  <span className="text-white text-xs">✓</span>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h1
+                  className="text-2xl font-bold text-white drop-shadow-lg"
+                  data-testid="text-title"
+                >
                   الدرعية
-                </span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-green-500 border-4 border-background flex items-center justify-center">
-                <span className="text-white text-xs">✓</span>
+                </h1>
+                <p className="text-lg text-white/90 font-medium">Diriyah</p>
+                <p className="text-sm text-white/80 max-w-xs mx-auto leading-relaxed">
+                  الوجهة التاريخية والثقافية للمملكة العربية السعودية
+                </p>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <h1
-                className="text-2xl font-bold text-foreground"
-                data-testid="text-title"
-              >
-                الدرعية
-              </h1>
-              <p className="text-lg text-primary font-medium">Diriyah</p>
-              <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                الوجهة التاريخية والثقافية للمملكة العربية السعودية
-              </p>
-            </div>
+            {/* Official Links - Glass Buttons */}
+            <section className="space-y-3">
+              <h2 className="text-sm font-semibold text-white/80 px-1">
+                الروابط
+              </h2>
+              <div className="space-y-3">
+                {officialLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white group-hover:bg-white/30 transition-colors">
+                        {getIcon(link.icon)}
+                      </div>
+                      <div className="flex-1 text-right">
+                        <p className="font-semibold text-white">{link.title}</p>
+                        <p className="text-sm text-white/70">{link.titleAr}</p>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            {/* Experience Links - Glass Buttons */}
+            <section className="space-y-3">
+              <h2 className="text-sm font-semibold text-white/80 px-1">
+                اكتشف الدرعية
+              </h2>
+              <div className="space-y-3">
+                {experienceLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white group-hover:bg-white/30 transition-colors">
+                        {getIcon(link.icon)}
+                      </div>
+                      <div className="flex-1 text-right">
+                        <p className="font-semibold text-white">{link.title}</p>
+                        <p className="text-sm text-white/70">{link.titleAr}</p>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
           </div>
+        </main>
 
-          {/* Official Links */}
-          <section className="space-y-3">
-            <h2 className="text-sm font-semibold text-muted-foreground px-1">
-              الروابط
-            </h2>
-            <div className="space-y-3">
-              {officialLinks.map((link) => (
-                <BioLinkCard
-                  key={link.id}
-                  link={link}
-                  icon={getIcon(link.icon)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Experience Links */}
-          <section className="space-y-3">
-            <h2 className="text-sm font-semibold text-muted-foreground px-1">
-              اكتشف الدرعية
-            </h2>
-            <div className="space-y-3">
-              {experienceLinks.map((link) => (
-                <BioLinkCard
-                  key={link.id}
-                  link={link}
-                  icon={getIcon(link.icon)}
-                />
-              ))}
-            </div>
-          </section>
-        </div>
-      </main>
-
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
