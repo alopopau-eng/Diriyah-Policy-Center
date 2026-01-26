@@ -48,7 +48,6 @@ const bioLinks: BioLink[] = [
 
 export default function Home() {
   const officialLinks = bioLinks.filter((l) => l.category === "official");
-  const experienceLinks = bioLinks.filter((l) => l.category === "experience");
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
@@ -68,8 +67,8 @@ export default function Home() {
         />
       </video>
 
-      {/* Dark overlay for better readability */}
-      <div className="absolute inset-0 bg-black/40 z-10" />
+      {/* Gold overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-amber-900/50 via-amber-800/40 to-amber-900/60 z-10" />
 
       {/* Content Container */}
       <div className="relative z-20 min-h-screen flex flex-col">
@@ -138,29 +137,6 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Experience Links - Glass Buttons */}
-            <section className="space-y-3">
-              <h2 className="text-sm font-semibold text-white/80 px-1">
-                اكتشف الدرعية
-              </h2>
-              <div className="space-y-3">
-                {experienceLinks.map((link) => (
-                  <a
-                    key={link.id}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-                    data-testid={`link-${link.id}`}
-                  >
-                    <div className="text-center">
-                      <p className="font-semibold text-white">{link.title}</p>
-                      <p className="text-sm text-white/70">{link.titleAr}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
           </div>
         </main>
 
