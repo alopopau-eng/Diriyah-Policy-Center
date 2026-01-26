@@ -2,15 +2,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import type { BioLink } from "@shared/schema";
-import {
-  Globe,
-  MapPin,
-  Calendar,
-  Utensils,
-  Building2,
-  Ticket,
-  Phone,
-} from "lucide-react";
 
 const bioLinks: BioLink[] = [
   {
@@ -54,28 +45,6 @@ const bioLinks: BioLink[] = [
     category: "experience",
   },
 ];
-
-const getIcon = (iconName: string) => {
-  const iconProps = { className: "h-5 w-5" };
-  switch (iconName) {
-    case "globe":
-      return <Globe {...iconProps} />;
-    case "ticket":
-      return <Ticket {...iconProps} />;
-    case "calendar":
-      return <Calendar {...iconProps} />;
-    case "utensils":
-      return <Utensils {...iconProps} />;
-    case "building":
-      return <Building2 {...iconProps} />;
-    case "mappin":
-      return <MapPin {...iconProps} />;
-    case "phone":
-      return <Phone {...iconProps} />;
-    default:
-      return <Globe {...iconProps} />;
-  }
-};
 
 export default function Home() {
   const officialLinks = bioLinks.filter((l) => l.category === "official");
@@ -157,16 +126,12 @@ export default function Home() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
+                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                    data-testid={`link-${link.id}`}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white group-hover:bg-white/30 transition-colors">
-                        {getIcon(link.icon)}
-                      </div>
-                      <div className="flex-1 text-right">
-                        <p className="font-semibold text-white">{link.title}</p>
-                        <p className="text-sm text-white/70">{link.titleAr}</p>
-                      </div>
+                    <div className="text-center">
+                      <p className="font-semibold text-white">{link.title}</p>
+                      <p className="text-sm text-white/70">{link.titleAr}</p>
                     </div>
                   </a>
                 ))}
@@ -185,16 +150,12 @@ export default function Home() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
+                    className="block w-full p-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                    data-testid={`link-${link.id}`}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white group-hover:bg-white/30 transition-colors">
-                        {getIcon(link.icon)}
-                      </div>
-                      <div className="flex-1 text-right">
-                        <p className="font-semibold text-white">{link.title}</p>
-                        <p className="text-sm text-white/70">{link.titleAr}</p>
-                      </div>
+                    <div className="text-center">
+                      <p className="font-semibold text-white">{link.title}</p>
+                      <p className="text-sm text-white/70">{link.titleAr}</p>
                     </div>
                   </a>
                 ))}
